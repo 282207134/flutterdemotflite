@@ -1,113 +1,113 @@
-# Contributing to TFLite Flutter Plugin
+# 为 TFLite Flutter 插件做贡献
 
-Thank you for your interest in contributing! This document provides guidelines for contributing to the project.
+感谢您对贡献的兴趣！本文档提供了为项目做贡献的指南。
 
-## Getting Started
+## 开始
 
-1. Fork the repository
-2. Clone your fork: `git clone https://github.com/your-username/flutter_tflite.git`
-3. Create a feature branch: `git checkout -b feature/your-feature-name`
-4. Make your changes
-5. Test your changes thoroughly
-6. Commit with clear messages
-7. Push to your fork: `git push origin feature/your-feature-name`
-8. Open a Pull Request
+1. Fork 仓库
+2. 克隆您的 fork：`git clone https://github.com/your-username/flutter_tflite.git`
+3. 创建功能分支：`git checkout -b feature/your-feature-name`
+4. 进行更改
+5. 彻底测试您的更改
+6. 使用清晰的消息提交
+7. 推送到您的 fork：`git push origin feature/your-feature-name`
+8. 打开 Pull Request
 
-## Development Setup
+## 开发环境设置
 
-### Prerequisites
-- Flutter SDK (latest stable version)
-- Android Studio / Xcode for platform-specific development
+### 前提条件
+- Flutter SDK（最新稳定版本）
+- Android Studio / Xcode 用于平台特定开发
 - Git
 
-### Building the Plugin
+### 构建插件
 
 ```bash
-# Get dependencies
+# 获取依赖
 flutter pub get
 
-# Run tests
+# 运行测试
 flutter test
 
-# Analyze code
+# 分析代码
 flutter analyze
 ```
 
-## Code Guidelines
+## 代码规范
 
-### Dart Code
-- Follow the [Dart Style Guide](https://dart.dev/guides/language/effective-dart/style)
-- Use meaningful variable and function names
-- Add documentation comments for public APIs
-- Keep functions focused and concise
+### Dart 代码
+- 遵循 [Dart 代码风格指南](https://dart.dev/guides/language/effective-dart/style)
+- 使用有意义的变量和函数名
+- 为公共 API 添加文档注释
+- 保持函数专注和简洁
 
-### Platform Code
+### 平台代码
 
 **Android (Java)**
-- Follow Java code conventions
-- Handle errors gracefully
-- Use async operations where appropriate
+- 遵循 Java 代码规范
+- 优雅地处理错误
+- 适当使用异步操作
 
 **iOS (Objective-C++)**
-- Follow Objective-C conventions
-- Manage memory properly
-- Test on multiple iOS versions
+- 遵循 Objective-C 规范
+- 正确管理内存
+- 在多个 iOS 版本上测试
 
-## Testing
+## 测试
 
-- Write unit tests for new features
-- Test on both Android and iOS
-- Test with different model types
-- Verify GPU delegate functionality
-- Test edge cases and error handling
+- 为新功能编写单元测试
+- 在 Android 和 iOS 上测试
+- 使用不同的模型类型测试
+- 验证 GPU 加速功能
+- 测试边缘情况和错误处理
 
-## Documentation
+## 文档
 
-- Update README.md for new features
-- Add examples for complex functionality
-- Update CHANGELOG.md with your changes
-- Document breaking changes clearly
+- 为新功能更新 README.md
+- 为复杂功能添加示例
+- 在 CHANGELOG.md 中更新您的更改
+- 清楚地记录破坏性更改
 
-## Pull Request Process
+## Pull Request 流程
 
-1. Ensure all tests pass
-2. Update documentation
-3. Add entry to CHANGELOG.md
-4. Provide clear PR description
-5. Link related issues
-6. Wait for review
+1. 确保所有测试通过
+2. 更新文档
+3. 在 CHANGELOG.md 中添加条目
+4. 提供清晰的 PR 描述
+5. 链接相关问题
+6. 等待审查
 
-## Reporting Issues
+## 报告问题
 
-When reporting bugs, include:
-- Flutter version
-- Platform (Android/iOS)
-- Device information
-- Steps to reproduce
-- Expected vs actual behavior
-- Error messages/stack traces
+报告错误时，请包括：
+- Flutter 版本
+- 平台（Android/iOS）
+- 设备信息
+- 重现步骤
+- 预期与实际行为
+- 错误消息/堆栈跟踪
 
-## Feature Requests
+## 功能请求
 
-For feature requests, provide:
-- Clear use case description
-- Expected behavior
-- Alternative solutions considered
-- Willingness to contribute
+对于功能请求，请提供：
+- 清晰的用例描述
+- 预期行为
+- 考虑过的替代方案
+- 愿意贡献
 
-## Code Review
+## 代码审查
 
-- Be respectful and constructive
-- Focus on code quality
-- Suggest improvements
-- Test thoroughly before approving
+- 保持尊重和建设性
+- 关注代码质量
+- 提出改进建议
+- 在批准前彻底测试
 
-## License
+## 许可证
 
-By contributing, you agree that your contributions will be licensed under the MIT License.
+通过贡献，您同意您的贡献将在 MIT 许可证下授权。
 
-## Questions?
+## 有疑问？
 
-Feel free to open an issue for questions or join discussions.
+请随时提出问题或加入讨论。
 
-Thank you for contributing! 🎉
+感谢您的贡献！🎉

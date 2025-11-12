@@ -1,50 +1,50 @@
-# TFLite Flutter Plugin - Project Overview
+# TFLite Flutter 插件 - 项目概览
 
-## 📋 Summary
+## 📋 概述
 
-This is a complete Flutter plugin for TensorFlow Lite, providing a comprehensive API for running machine learning models on both Android and iOS platforms. The project is built with clear, concise documentation and follows Flutter plugin development best practices.
+这是一个完整的 Flutter TensorFlow Lite 插件，提供在 Android 和 iOS 平台上运行机器学习模型的全面 API。项目采用清晰简洁的文档，遵循 Flutter 插件开发最佳实践。
 
-## 🎯 Purpose
+## 🎯 目标
 
-Enable Flutter developers to easily integrate TensorFlow Lite models into their applications for:
-- Real-time image classification
-- Object detection
-- Pose estimation
-- Image segmentation
-- Image-to-image translation
+帮助 Flutter 开发者轻松将 TensorFlow Lite 模型集成到应用程序中，支持：
+- 实时图像分类
+- 目标检测
+- 姿态估计
+- 图像分割
+- 图像到图像转换
 
-## ✨ Key Features
+## ✨ 核心功能
 
-### Supported Models
-- **Image Classification**: Standard CNN models (MobileNet, Inception, etc.)
-- **Object Detection**: SSD MobileNet and YOLO variants
-- **PoseNet**: Human pose estimation
-- **Deeplab**: Semantic segmentation
-- **Pix2Pix**: Conditional GANs for image translation
+### 支持的模型
+- **图像分类**：标准 CNN 模型（MobileNet、Inception 等）
+- **目标检测**：SSD MobileNet 和 YOLO 变体
+- **PoseNet**：人体姿态估计
+- **Deeplab**：语义分割
+- **Pix2Pix**：用于图像转换的条件 GAN
 
-### Platform Support
+### 平台支持
 - ✅ Android (API 19+)
 - ✅ iOS (9.0+)
-- ✅ GPU Delegate support
-- ✅ Multi-threading support
+- ✅ GPU 加速支持
+- ✅ 多线程支持
 
-### Processing Modes
-- 📷 Static images (file paths)
-- 🔢 Binary data (byte arrays)
-- 🎥 Real-time video frames (camera streams)
+### 处理模式
+- 📷 静态图像（文件路径）
+- 🔢 二进制数据（字节数组）
+- 🎥 实时视频帧（相机流）
 
-## 📂 Project Structure
+## 📂 项目结构
 
-The project follows standard Flutter plugin architecture:
+项目遵循标准 Flutter 插件架构：
 
 ```
-Plugin Architecture
+插件架构
 ┌─────────────────┐
-│   Flutter App   │
+│   Flutter 应用   │
 └────────┬────────┘
          │ Dart API
     ┌────▼─────┐
-    │ lib/     │  Method Channel Communication
+    │ lib/     │  Method Channel 通信
     │ tflite.  │
     │ dart     │
     └────┬─────┘
@@ -53,7 +53,7 @@ Plugin Architecture
     │                 │
 ┌───▼────┐      ┌────▼───┐
 │Android │      │  iOS   │
-│Plugin  │      │ Plugin │
+│插件    │      │  插件  │
 │(Java)  │      │(Obj-C++)│
 └───┬────┘      └────┬───┘
     │                │
@@ -63,160 +63,160 @@ Plugin Architecture
 └────────┘      └────────┘
 ```
 
-## 📖 Documentation
+## 📖 文档
 
-### Main Documentation
-- **README.md**: Quick start guide, API reference, examples
-- **CHANGELOG.md**: Version history and breaking changes
-- **CONTRIBUTING.md**: Contribution guidelines
-- **LICENSE**: MIT License
+### 主要文档
+- **README.md**：快速入门指南、API 参考、示例
+- **CHANGELOG.md**：版本历史和重大变更
+- **CONTRIBUTING.md**：贡献指南
+- **LICENSE**：MIT 许可证
 
-### Examples
-- **example/README.md**: Comprehensive usage examples for all features
+### 示例
+- **example/README.md**：所有功能的全面使用示例
 
-### Technical
-- **PROJECT_STRUCTURE.md**: Detailed file structure
-- **OVERVIEW.md**: This file - high-level overview
+### 技术文档
+- **PROJECT_STRUCTURE.md**：详细的文件结构
+- **OVERVIEW.md**：本文件 - 高级概览
 
-## 🚀 Quick Start
+## 🚀 快速开始
 
 ```dart
-// 1. Load model
+// 1. 加载模型
 await Tflite.loadModel(
   model: "assets/model.tflite",
   labels: "assets/labels.txt",
 );
 
-// 2. Run inference
+// 2. 运行推理
 var results = await Tflite.runModelOnImage(
   path: imagePath,
   numResults: 5,
   threshold: 0.5,
 );
 
-// 3. Clean up
+// 3. 清理资源
 await Tflite.close();
 ```
 
-## 🔧 Technical Details
+## 🔧 技术细节
 
-### Dart Layer (lib/tflite.dart)
-- Clean API with named parameters
-- Null-safety compliant
-- Comprehensive method channel communication
-- Type-safe result handling
+### Dart 层 (lib/tflite.dart)
+- 使用命名参数的简洁 API
+- 符合 null-safety
+- 全面的 Method Channel 通信
+- 类型安全的结果处理
 
-### Android Layer (Java)
-- TensorFlow Lite Java API integration
-- Efficient bitmap processing
-- GPU delegate support
-- AsyncTask for non-blocking operations
-- Proper memory management
+### Android 层 (Java)
+- TensorFlow Lite Java API 集成
+- 高效的位图处理
+- GPU 加速支持
+- 使用 AsyncTask 实现非阻塞操作
+- 适当的内存管理
 
-### iOS Layer (Objective-C++)
-- TensorFlow Lite C API integration
-- CoreImage for image processing
-- Metal GPU delegate
-- Thread-safe operations
-- Efficient memory handling
+### iOS 层 (Objective-C++)
+- TensorFlow Lite C API 集成
+- 使用 CoreImage 进行图像处理
+- Metal GPU 加速
+- 线程安全操作
+- 高效的内存处理
 
-## 📊 Code Statistics
+## 📊 代码统计
 
-| Component | Lines | Description |
-|-----------|-------|-------------|
-| Dart API | 417 | Main plugin interface |
-| Android Plugin | ~1,587 | Java implementation |
-| iOS Plugin | ~1,484 | Objective-C++ implementation |
-| Tests | 570 | Unit tests |
-| Documentation | ~700 | READMEs and guides |
+| 组件 | 行数 | 说明 |
+|------|------|------|
+| Dart API | 417 | 主插件接口 |
+| Android 插件 | ~1,587 | Java 实现 |
+| iOS 插件 | ~1,484 | Objective-C++ 实现 |
+| 测试 | 570 | 单元测试 |
+| 文档 | ~700 | README 和指南 |
 
-## 🎨 Design Principles
+## 🎨 设计原则
 
-1. **Simplicity**: Easy-to-use API with sensible defaults
-2. **Flexibility**: Support multiple input/output formats
-3. **Performance**: GPU acceleration and multi-threading
-4. **Reliability**: Comprehensive error handling
-5. **Documentation**: Clear, concise, practical examples
+1. **简单性**：易于使用的 API 和合理的默认值
+2. **灵活性**：支持多种输入/输出格式
+3. **性能**：GPU 加速和多线程
+4. **可靠性**：全面的错误处理
+5. **文档**：清晰、简洁、实用的示例
 
-## 🔄 Workflow
+## 🔄 工作流程
 
-### Development
+### 开发
 ```bash
-flutter pub get      # Get dependencies
-flutter analyze      # Static analysis
-flutter test         # Run unit tests
+flutter pub get      # 获取依赖
+flutter analyze      # 静态分析
+flutter test         # 运行单元测试
 ```
 
-### Usage in Apps
+### 在应用中使用
 ```yaml
 dependencies:
   tflite: ^1.1.2
 ```
 
-### Platform Setup
-- **Android**: Configure aaptOptions in build.gradle
-- **iOS**: Set compile sources to Objective-C++
+### 平台设置
+- **Android**：在 build.gradle 中配置 aaptOptions
+- **iOS**：将编译源设置为 Objective-C++
 
-## 🌟 Highlights
+## 🌟 亮点
 
-### What Makes This Plugin Great
+### 这个插件的优势
 
-1. **Complete Feature Set**: All major TFLite model types supported
-2. **Clear Documentation**: Easy to understand and follow
-3. **Production Ready**: Used in real-world applications
-4. **Well Tested**: Comprehensive unit test coverage
-5. **Active Maintenance**: Regular updates and bug fixes
-6. **Community Friendly**: Open to contributions
+1. **完整的功能集**：支持所有主要 TFLite 模型类型
+2. **清晰的文档**：易于理解和遵循
+3. **生产就绪**：已在实际应用中使用
+4. **良好的测试**：全面的单元测试覆盖
+5. **积极维护**：定期更新和错误修复
+6. **社区友好**：欢迎贡献
 
-### Best For
+### 最适合
 
-- Mobile ML/AI applications
-- Real-time object detection
-- Pose tracking apps
-- Image classification tasks
-- Edge device inference
+- 移动 ML/AI 应用
+- 实时目标检测
+- 姿态跟踪应用
+- 图像分类任务
+- 边缘设备推理
 
-## 📦 Dependencies
+## 📦 依赖
 
 ### Flutter/Dart
 - meta: ^1.3.0
 - SDK: >=2.12.0 <3.0.0
 
 ### Android
-- TensorFlow Lite: latest
-- TensorFlow Lite GPU: latest
+- TensorFlow Lite: 最新版本
+- TensorFlow Lite GPU: 最新版本
 - Min SDK: 19
 
 ### iOS
-- TensorFlowLiteC (via CocoaPods)
-- Deployment Target: 9.0+
+- TensorFlowLiteC（通过 CocoaPods）
+- 部署目标: 9.0+
 
-## 🤝 Contributing
+## 🤝 贡献
 
-We welcome contributions! See CONTRIBUTING.md for guidelines.
+我们欢迎贡献！请参阅 CONTRIBUTING.md 了解指南。
 
-### How to Contribute
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add/update tests
-5. Update documentation
-6. Submit a pull request
+### 如何贡献
+1. Fork 仓库
+2. 创建功能分支
+3. 进行更改
+4. 添加/更新测试
+5. 更新文档
+6. 提交 Pull Request
 
-## 📄 License
+## 📄 许可证
 
-MIT License - See LICENSE file for details.
+MIT License - 详见 LICENSE 文件
 
-## 🙏 Acknowledgments
+## 🙏 致谢
 
-Based on the excellent work by [Qian Sha](https://github.com/shaqian/flutter_tflite) and the Flutter community.
+基于 [Qian Sha](https://github.com/shaqian/flutter_tflite) 和 Flutter 社区的出色工作。
 
-## 📞 Support
+## 📞 支持
 
-- **Issues**: Report bugs via GitHub Issues
-- **Questions**: Open a discussion
-- **Examples**: Check example/ directory
+- **问题**：通过 GitHub Issues 报告错误
+- **问题**：开启讨论
+- **示例**：查看 example/ 目录
 
 ---
 
-**Built with ❤️ for the Flutter and ML community**
+**用 ❤️ 为 Flutter 和 ML 社区构建**

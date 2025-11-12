@@ -1,87 +1,87 @@
-# Project Structure
+# 项目结构
 
 ```
 flutter_tflite/
-├── android/                          # Android platform implementation
+├── android/                          # Android 平台实现
 │   ├── src/main/
-│   │   ├── AndroidManifest.xml      # Android manifest
+│   │   ├── AndroidManifest.xml      # Android 清单文件
 │   │   └── java/sq/flutter/tflite/
-│   │       └── TflitePlugin.java    # Main Android plugin (56K)
-│   ├── build.gradle                  # Android build configuration
-│   ├── settings.gradle               # Android settings
-│   └── gradle.properties             # Gradle properties
+│   │       └── TflitePlugin.java    # Android 插件主文件 (56K)
+│   ├── build.gradle                  # Android 构建配置
+│   ├── settings.gradle               # Android 设置
+│   └── gradle.properties             # Gradle 属性
 │
-├── ios/                              # iOS platform implementation
+├── ios/                              # iOS 平台实现
 │   ├── Classes/
-│   │   ├── TflitePlugin.h           # iOS plugin header
-│   │   ├── TflitePlugin.mm          # Main iOS plugin (54K)
-│   │   ├── ios_image_load.h         # Image loading utilities
-│   │   └── ios_image_load.mm        # Image loading implementation
-│   ├── Assets/                       # iOS assets folder
-│   └── tflite.podspec               # CocoaPods specification
+│   │   ├── TflitePlugin.h           # iOS 插件头文件
+│   │   ├── TflitePlugin.mm          # iOS 插件主文件 (54K)
+│   │   ├── ios_image_load.h         # 图像加载工具
+│   │   └── ios_image_load.mm        # 图像加载实现
+│   ├── Assets/                       # iOS 资源文件夹
+│   └── tflite.podspec               # CocoaPods 规范
 │
 ├── lib/
-│   └── tflite.dart                  # Main Dart API (417 lines)
+│   └── tflite.dart                  # Dart API 主文件 (417 行)
 │
 ├── test/
-│   └── tflite_test.dart             # Unit tests (570 lines)
+│   └── tflite_test.dart             # 单元测试 (570 行)
 │
 ├── example/
-│   └── README.md                     # Usage examples and tutorials
+│   └── README.md                     # 使用示例和教程
 │
-├── .gitignore                        # Git ignore rules
-├── CHANGELOG.md                      # Version history (75 lines)
-├── CONTRIBUTING.md                   # Contribution guidelines (113 lines)
-├── LICENSE                           # MIT License
-├── README.md                         # Main documentation (323 lines)
-└── pubspec.yaml                      # Package configuration
+├── .gitignore                        # Git 忽略规则
+├── CHANGELOG.md                      # 版本历史 (75 行)
+├── CONTRIBUTING.md                   # 贡献指南 (113 行)
+├── LICENSE                           # MIT 许可证
+├── README.md                         # 主文档 (323 行)
+└── pubspec.yaml                      # 包配置
 ```
 
-## Key Files
+## 关键文件
 
-### Dart Layer (`lib/tflite.dart`)
-- Main Flutter plugin API
-- Method channel communication
-- Supports all TFLite operations:
-  - Image classification
-  - Object detection (SSD, YOLO)
+### Dart 层 (`lib/tflite.dart`)
+- Flutter 插件主 API
+- Method Channel 通信
+- 支持所有 TFLite 操作：
+  - 图像分类
+  - 目标检测（SSD、YOLO）
   - Pix2Pix
-  - Deeplab segmentation
-  - PoseNet pose estimation
+  - Deeplab 分割
+  - PoseNet 姿态估计
 
-### Android Layer (`android/src/main/java/sq/flutter/tflite/TflitePlugin.java`)
-- Android platform implementation
-- TensorFlow Lite interpreter integration
-- Image processing utilities
-- GPU delegate support
-- Async operation handling
+### Android 层 (`android/src/main/java/sq/flutter/tflite/TflitePlugin.java`)
+- Android 平台实现
+- TensorFlow Lite 解释器集成
+- 图像处理工具
+- GPU 加速支持
+- 异步操作处理
 
-### iOS Layer (`ios/Classes/TflitePlugin.mm`)
-- iOS platform implementation
-- TensorFlow Lite C API integration
-- Image processing for iOS
-- Metal GPU delegate support
-- Thread management
+### iOS 层 (`ios/Classes/TflitePlugin.mm`)
+- iOS 平台实现
+- TensorFlow Lite C API 集成
+- iOS 图像处理
+- Metal GPU 加速支持
+- 线程管理
 
-## Documentation
+## 文档
 
-- **README.md**: Clear, concise main documentation with quick start guide
-- **CHANGELOG.md**: Detailed version history
-- **CONTRIBUTING.md**: Guidelines for contributors
-- **example/README.md**: Comprehensive usage examples
+- **README.md**：清晰简洁的主文档和快速入门指南
+- **CHANGELOG.md**：详细的版本历史
+- **CONTRIBUTING.md**：贡献者指南
+- **example/README.md**：全面的使用示例
 
-## Configuration Files
+## 配置文件
 
-- **pubspec.yaml**: Flutter package configuration
-- **android/build.gradle**: Android build setup
-- **ios/tflite.podspec**: iOS CocoaPods setup
+- **pubspec.yaml**：Flutter 包配置
+- **android/build.gradle**：Android 构建设置
+- **ios/tflite.podspec**：iOS CocoaPods 设置
 
-## Total Lines of Code
+## 代码统计
 
-- Dart: ~987 lines
-- Java (Android): ~1,587 lines
-- Objective-C++ (iOS): ~1,484 lines
-- Documentation: ~511 lines
-- Tests: ~570 lines
+- Dart：~987 行
+- Java (Android)：~1,587 行
+- Objective-C++ (iOS)：~1,484 行
+- 文档：~511 行
+- 测试：~570 行
 
-**Total: ~4,639 lines**
+**总计：~4,639 行**

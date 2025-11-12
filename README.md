@@ -1,29 +1,29 @@
-# TFLite Flutter Plugin
+# TFLite Flutter 插件
 
-A Flutter plugin for TensorFlow Lite API with support for image classification, object detection (SSD and YOLO), Pix2Pix, Deeplab, and PoseNet on both iOS and Android.
+Flutter TensorFlow Lite 插件，支持图像分类、目标检测（SSD 和 YOLO）、Pix2Pix、Deeplab 和 PoseNet，同时兼容 iOS 和 Android 平台。
 
-## Features
+## 功能特性
 
-- 🖼️ **Image Classification** - Classify images using pre-trained models
-- 🎯 **Object Detection** - Detect objects with SSD MobileNet and YOLO
-- 🎨 **Pix2Pix** - Image-to-image translation
-- 🧩 **Deeplab** - Semantic segmentation
-- 🤸 **PoseNet** - Pose estimation
-- ⚡ **GPU Delegate** - Hardware acceleration support
-- 📹 **Real-time Detection** - Process video frames
+- 🖼️ **图像分类** - 使用预训练模型对图像进行分类
+- 🎯 **目标检测** - 使用 SSD MobileNet 和 YOLO 进行目标检测
+- 🎨 **Pix2Pix** - 图像到图像的转换
+- 🧩 **Deeplab** - 语义分割
+- 🤸 **PoseNet** - 姿态估计
+- ⚡ **GPU 加速** - 支持硬件加速
+- 📹 **实时检测** - 处理视频帧
 
-## Installation
+## 安装
 
-Add to your `pubspec.yaml`:
+在 `pubspec.yaml` 中添加：
 
 ```yaml
 dependencies:
   tflite: ^1.1.2
 ```
 
-### Android Setup
+### Android 配置
 
-In `android/app/build.gradle`, add:
+在 `android/app/build.gradle` 中添加：
 
 ```gradle
 android {
@@ -34,24 +34,24 @@ android {
 }
 ```
 
-### iOS Setup
+### iOS 配置
 
-If you encounter build errors:
+如果遇到构建错误：
 
-**'vector' file not found:**
-- Open `ios/Runner.xcworkspace` in Xcode
-- Click Runner > Targets > Runner > Build Settings
-- Search "Compile Sources As"
-- Change value to "Objective-C++"
+**找不到 'vector' 文件：**
+- 在 Xcode 中打开 `ios/Runner.xcworkspace`
+- 点击 Runner > Targets > Runner > Build Settings
+- 搜索 "Compile Sources As"
+- 将值改为 "Objective-C++"
 
-**'tensorflow/lite/kernels/register.h' file not found:**
-- For early TensorFlow versions, uncomment `//#define CONTRIB_PATH` in `ios/Classes/TflitePlugin.mm`
+**找不到 'tensorflow/lite/kernels/register.h' 文件：**
+- 对于早期版本的 TensorFlow，在 `ios/Classes/TflitePlugin.mm` 中取消注释 `//#define CONTRIB_PATH`
 
-## Quick Start
+## 快速开始
 
-### 1. Add Model Assets
+### 1. 添加模型资源
 
-Create an `assets` folder and add your model files. Update `pubspec.yaml`:
+创建 `assets` 文件夹并添加模型文件，在 `pubspec.yaml` 中更新：
 
 ```yaml
 flutter:
@@ -60,13 +60,13 @@ flutter:
     - assets/model.tflite
 ```
 
-### 2. Import the Plugin
+### 2. 导入插件
 
 ```dart
 import 'package:tflite/tflite.dart';
 ```
 
-### 3. Load Model
+### 3. 加载模型
 
 ```dart
 await Tflite.loadModel(
@@ -77,7 +77,7 @@ await Tflite.loadModel(
 );
 ```
 
-### 4. Run Inference
+### 4. 运行推理
 
 ```dart
 var results = await Tflite.runModelOnImage(
@@ -87,26 +87,26 @@ var results = await Tflite.runModelOnImage(
 );
 ```
 
-### 5. Clean Up
+### 5. 清理资源
 
 ```dart
 await Tflite.close();
 ```
 
-## Usage
+## 使用方法
 
-### Image Classification
+### 图像分类
 
-**Output Format:**
+**输出格式：**
 ```dart
 {
   "index": 0,
-  "label": "cat",
+  "label": "猫",
   "confidence": 0.87
 }
 ```
 
-**On Image File:**
+**处理图像文件：**
 ```dart
 var results = await Tflite.runModelOnImage(
   path: imagePath,
@@ -118,7 +118,7 @@ var results = await Tflite.runModelOnImage(
 );
 ```
 
-**On Binary Data:**
+**处理二进制数据：**
 ```dart
 var results = await Tflite.runModelOnBinary(
   binary: imageBytes,
@@ -128,7 +128,7 @@ var results = await Tflite.runModelOnBinary(
 );
 ```
 
-**On Video Frame:**
+**处理视频帧：**
 ```dart
 var results = await Tflite.runModelOnFrame(
   bytesList: img.planes.map((plane) => plane.bytes).toList(),
@@ -139,12 +139,12 @@ var results = await Tflite.runModelOnFrame(
 );
 ```
 
-### Object Detection
+### 目标检测
 
-**Output Format:**
+**输出格式：**
 ```dart
 {
-  "detectedClass": "dog",
+  "detectedClass": "狗",
   "confidenceInClass": 0.92,
   "rect": {
     "x": 0.15,
@@ -155,7 +155,7 @@ var results = await Tflite.runModelOnFrame(
 }
 ```
 
-**SSD MobileNet:**
+**SSD MobileNet：**
 ```dart
 var results = await Tflite.detectObjectOnImage(
   path: imagePath,
@@ -167,7 +167,7 @@ var results = await Tflite.detectObjectOnImage(
 );
 ```
 
-**YOLO:**
+**YOLO：**
 ```dart
 var results = await Tflite.detectObjectOnImage(
   path: imagePath,
@@ -190,7 +190,7 @@ var result = await Tflite.runPix2PixOnImage(
 );
 ```
 
-### Deeplab Segmentation
+### Deeplab 分割
 
 ```dart
 var result = await Tflite.runSegmentationOnImage(
@@ -204,7 +204,7 @@ var result = await Tflite.runSegmentationOnImage(
 
 ### PoseNet
 
-**Output Format:**
+**输出格式：**
 ```dart
 [
   {
@@ -212,13 +212,13 @@ var result = await Tflite.runSegmentationOnImage(
     "keypoints": {
       0: {"x": 0.5, "y": 0.3, "part": "nose", "score": 0.99},
       1: {"x": 0.45, "y": 0.28, "part": "leftEye", "score": 0.97},
-      // ... more keypoints
+      // ... 更多关键点
     }
   }
 ]
 ```
 
-**Usage:**
+**使用方法：**
 ```dart
 var results = await Tflite.runPoseNetOnImage(
   path: imagePath,
@@ -228,96 +228,96 @@ var results = await Tflite.runPoseNetOnImage(
 );
 ```
 
-## API Reference
+## API 参考
 
-### Core Methods
+### 核心方法
 
-| Method | Description |
-|--------|-------------|
-| `loadModel()` | Load TFLite model and labels |
-| `close()` | Release resources |
+| 方法 | 说明 |
+|------|------|
+| `loadModel()` | 加载 TFLite 模型和标签 |
+| `close()` | 释放资源 |
 
-### Image Classification
+### 图像分类
 
-| Method | Description |
-|--------|-------------|
-| `runModelOnImage()` | Run on image file |
-| `runModelOnBinary()` | Run on byte array |
-| `runModelOnFrame()` | Run on video frame |
+| 方法 | 说明 |
+|------|------|
+| `runModelOnImage()` | 处理图像文件 |
+| `runModelOnBinary()` | 处理字节数组 |
+| `runModelOnFrame()` | 处理视频帧 |
 
-### Object Detection
+### 目标检测
 
-| Method | Description |
-|--------|-------------|
-| `detectObjectOnImage()` | Detect objects in image file |
-| `detectObjectOnBinary()` | Detect objects in byte array |
-| `detectObjectOnFrame()` | Detect objects in video frame |
+| 方法 | 说明 |
+|------|------|
+| `detectObjectOnImage()` | 在图像文件中检测目标 |
+| `detectObjectOnBinary()` | 在字节数组中检测目标 |
+| `detectObjectOnFrame()` | 在视频帧中检测目标 |
 
-### Image Processing
+### 图像处理
 
-| Method | Description |
-|--------|-------------|
-| `runPix2PixOnImage()` | Image-to-image translation |
-| `runSegmentationOnImage()` | Semantic segmentation |
-| `runPoseNetOnImage()` | Pose estimation |
+| 方法 | 说明 |
+|------|------|
+| `runPix2PixOnImage()` | 图像到图像转换 |
+| `runSegmentationOnImage()` | 语义分割 |
+| `runPoseNetOnImage()` | 姿态估计 |
 
-## Parameters
+## 参数说明
 
-### Common Parameters
+### 通用参数
 
-- `model` - Path to .tflite model file
-- `labels` - Path to labels file
-- `numThreads` - Number of threads (default: 1)
-- `useGpuDelegate` - Enable GPU acceleration (default: false)
-- `imageMean` - Image normalization mean
-- `imageStd` - Image normalization std
-- `numResults` - Maximum number of results
-- `threshold` - Confidence threshold
-- `asynch` - Run asynchronously (default: true)
+- `model` - .tflite 模型文件路径
+- `labels` - 标签文件路径
+- `numThreads` - 线程数（默认：1）
+- `useGpuDelegate` - 启用 GPU 加速（默认：false）
+- `imageMean` - 图像归一化均值
+- `imageStd` - 图像归一化标准差
+- `numResults` - 最大结果数量
+- `threshold` - 置信度阈值
+- `asynch` - 异步运行（默认：true）
 
-### YOLO-Specific Parameters
+### YOLO 专用参数
 
-- `anchors` - Anchor boxes array
-- `blockSize` - Block size (default: 32)
-- `numBoxesPerBlock` - Boxes per block (default: 5)
+- `anchors` - 锚框数组
+- `blockSize` - 块大小（默认：32）
+- `numBoxesPerBlock` - 每块的框数（默认：5）
 
-### PoseNet Parameters
+### PoseNet 参数
 
-- `nmsRadius` - Non-maximum suppression radius (default: 20)
+- `nmsRadius` - 非极大值抑制半径（默认：20）
 
-## GPU Delegate
+## GPU 加速
 
-For better performance with GPU delegate on Android, follow [TensorFlow's release mode setup](https://www.tensorflow.org/lite/performance/gpu#step_5_release_mode).
+在 Android 上使用 GPU 加速以获得更好的性能，请参考 [TensorFlow 发布模式设置](https://www.tensorflow.org/lite/performance/gpu#step_5_release_mode)。
 
-## Models
+## 模型资源
 
-Compatible with TensorFlow Lite models:
-- [Image Classification Models](https://www.tensorflow.org/lite/models/image_classification/overview)
-- [Object Detection Models](https://www.tensorflow.org/lite/models/object_detection/overview)
-- [Segmentation Models](https://www.tensorflow.org/lite/models/segmentation/overview)
-- [Pose Estimation Models](https://www.tensorflow.org/lite/models/pose_estimation/overview)
+兼容的 TensorFlow Lite 模型：
+- [图像分类模型](https://www.tensorflow.org/lite/models/image_classification/overview)
+- [目标检测模型](https://www.tensorflow.org/lite/models/object_detection/overview)
+- [分割模型](https://www.tensorflow.org/lite/models/segmentation/overview)
+- [姿态估计模型](https://www.tensorflow.org/lite/models/pose_estimation/overview)
 
-## Example
+## 示例
 
-Check the [example](example/) directory for complete implementations of:
-- Static image prediction
-- Real-time camera detection
-- All supported model types
+查看 [example](example/) 目录获取完整实现：
+- 静态图像预测
+- 实时相机检测
+- 所有支持的模型类型
 
-## Breaking Changes
+## 重大变更
 
-### Since 1.1.0
-- iOS TensorFlow Lite library upgraded from TensorFlowLite 1.x to TensorFlowLiteObjC 2.x
+### 从 1.1.0 开始
+- iOS TensorFlow Lite 库从 TensorFlowLite 1.x 升级到 TensorFlowLiteObjC 2.x
 
-### Since 1.0.0
-- Updated to TensorFlow Lite API v1.12.0
-- Removed `inputSize` and `numChannels` parameters (auto-detected from model)
-- Moved `numThreads` to `Tflite.loadModel()`
+### 从 1.0.0 开始
+- 更新到 TensorFlow Lite API v1.12.0
+- 移除 `inputSize` 和 `numChannels` 参数（从模型自动检测）
+- 将 `numThreads` 移至 `Tflite.loadModel()`
 
-## License
+## 开源协议
 
-MIT License - see [LICENSE](LICENSE) file for details.
+MIT License - 详见 [LICENSE](LICENSE) 文件
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+欢迎贡献！请随时提交 Pull Request。
